@@ -1,16 +1,6 @@
 local mkGroup = vim.api.nvim_create_augroup
 local mkCmd = vim.api.nvim_create_autocmd
 
-local packerGroup = mkGroup('PackerUpdate', { clear = true })
-mkCmd('BufWritePost', {
-	group = packerGroup,
-	pattern = 'plugins.lua',
-	callback = function()
-		vim.cmd [[luafile %]]
-		vim.cmd [[PackerCompile]]
-	end
-})
-
 local hlGroup = mkGroup('YankHighlight', { clear = true })
 mkCmd('TextYankPost', {
 	group = hlGroup,

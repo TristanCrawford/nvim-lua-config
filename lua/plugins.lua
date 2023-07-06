@@ -1,67 +1,62 @@
-vim.cmd('packadd packer.nvim')
+local plugins = {
+  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+  "nvim-treesitter/nvim-treesitter-textobjects",
 
-return require('packer').startup(function()
+  -- Languages
+  "dag/vim-fish",
+  "gabrielelana/vim-markdown",
 
-	use 'wbthomason/packer.nvim'
+  -- Language Tooling
+  "neovim/nvim-lspconfig",
+  "mfussenegger/nvim-dap",
+  "hrsh7th/vim-vsnip",
+  "hrsh7th/cmp-nvim-lsp",
+  "hrsh7th/cmp-nvim-lsp-signature-help",
+  "hrsh7th/cmp-buffer",
+  "hrsh7th/cmp-path",
+  "hrsh7th/cmp-vsnip",
+  "hrsh7th/nvim-cmp",
 
-	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-	use 'nvim-treesitter/nvim-treesitter-textobjects'
-	use 'nvim-treesitter/playground'
+  -- Other
+  { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
+  { "akinsho/bufferline.nvim", branch = "main" },
+  { "glepnir/galaxyline.nvim", branch = "main" },
+  { "chrisgrieser/nvim-genghis", dependencies = "stevearc/dressing.nvim" },
 
-	use 'neovim/nvim-lspconfig'
-	use 'ray-x/lsp_signature.nvim'
+  "ThePrimeagen/refactoring.nvim",
+  "brenoprata10/nvim-highlight-colors",
+  "ggandor/leap.nvim",
+  "junegunn/vim-easy-align",
+  "knsh14/vim-github-link",
+  "kyazdani42/nvim-tree.lua",
+  "kyazdani42/nvim-web-devicons",
+  "kylechui/nvim-surround",
+  "numToStr/Comment.nvim",
+  "svermeulen/vim-subversive",
+  "tanvirtin/vgit.nvim",
+  "tpope/vim-abolish",
+  "tpope/vim-dispatch",
+  "tpope/vim-sleuth",
+  "vim-test/vim-test",
 
-	-- Debugging
-	use 'mfussenegger/nvim-dap'
+  -- Color Schemes
+  "olimorris/onedarkpro.nvim",
+  { "JoosepAlviste/palenightfall.nvim", config = function() vim.cmd[[colorscheme palenightfall]] end, },
+}
 
-	-- Completion
-	use {
-		'ms-jpq/coq_nvim',
-		branch = 'coq',
-		setup = function()
-			vim.g.coq_settings = { auto_start = 'shut-up' }
-		end
-	}
-	use { 'ms-jpq/coq.artifacts', branch = 'artifacts' }
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
-	-- Other
-	use 'kyazdani42/nvim-web-devicons'
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
 
-	use 'kyazdani42/nvim-tree.lua'
+vim.opt.rtp:prepend(lazypath)
 
-	use { 'akinsho/bufferline.nvim', branch = 'main' }
-
-	use {
-		'nvim-telescope/telescope.nvim',
-		requires = {{ 'nvim-lua/plenary.nvim' }},
-	}
-
-	use {
-		'ThePrimeagen/harpoon',
-		requires = {{ 'nvim-lua/plenary.nvim' }},
-	}
-
-	use 'ThePrimeagen/refactoring.nvim'
-	use { 'glepnir/galaxyline.nvim', branch = 'main' }
-	use 'tanvirtin/vgit.nvim'
-	use 'numToStr/Comment.nvim'
-	use 'ggandor/leap.nvim'
-	use 'tpope/vim-surround'
-	use 'tpope/vim-sleuth'
-	use 'tpope/vim-abolish'
-	use 'tpope/vim-dadbod'
-	use { 'kristijanhusak/vim-dadbod-ui', requires = { 'tpope/vim-dadbod' } }
-	use 'junegunn/vim-easy-align'
-	use 'svermeulen/vim-subversive'
-	use 'vim-test/vim-test'
-	use 'brenoprata10/nvim-highlight-colors'
-	use 'knsh14/vim-github-link'
-
-	-- Color Schemes
-	use { 'olimorris/onedarkpro.nvim', config = 'vim.cmd[[colorscheme onedark]]' }
-
-	-- Language Specific
-	use 'dag/vim-fish'
-	use 'gabrielelana/vim-markdown'
-	use 'vim-crystal/vim-crystal'
-end)
+require("lazy").setup(plugins)
