@@ -13,9 +13,9 @@ map('n', '[b', '<Cmd>bp<CR>', no_re)
 map('n', ']b', '<Cmd>bn<CR>', no_re)
 
 -- Tab Management
-map('n', '<Leader>tp', '<Cmd>tabprev<CR>', no_re)
-map('n', '<Leader>tn', '<Cmd>tabnext<CR>', no_re)
-map('n', '<Leader>tc', '<Cmd>tabnew<CR>', no_re)
+map('n', '[t', '<Cmd>tabprev<CR>', no_re)
+map('n', ']t', '<Cmd>tabnext<CR>', no_re)
+map('n', '<Leader>tn', '<Cmd>tabnew<CR>', no_re)
 
 -- Terminal
 map('t', '<C-o>', '<C-\\><C-n>', no_re)

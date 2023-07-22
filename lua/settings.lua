@@ -7,6 +7,7 @@ g.do_filetype_lua = 1
 o.tgc   = true
 o.hid   = true
 o.nu    = true
+o.rnu    = true
 o.ts    = 2
 o.sw    = 2
 o.et    = false
@@ -31,3 +32,7 @@ o.spr = true
 o.sb  = true
 
 o.cot = 'menu,menuone,noselect'
+
+-- Grep
+o.grepprg = 'rg --vimgrep'
+o.grepformat = '%f:%l:%c:%m'
