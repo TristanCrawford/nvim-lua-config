@@ -1,21 +1,15 @@
-local map = vim.api.nvim_set_keymap
-local no_re = { noremap = true }
-
--- Config
-map('n', '<Leader><Leader>', '<Cmd>exe "e "..stdpath("config").."/lua/plugins.lua"<CR>', no_re)
-
 -- Undo Breakpoints
-map('i', ',', ',<C-g>u', no_re)
-map('i', '.', '.<C-g>u', no_re)
+vim.keymap.set('i', ',', ',<C-g>u')
+vim.keymap.set('i', '.', '.<C-g>u')
 
 -- Buffer Navigation
-map('n', '[b', '<Cmd>bp<CR>', no_re)
-map('n', ']b', '<Cmd>bn<CR>', no_re)
+vim.keymap.set('n', '[b', '<Cmd>bp<CR>')
+vim.keymap.set('n', ']b', '<Cmd>bn<CR>')
 
 -- Tab Management
-map('n', '[t', '<Cmd>tabprev<CR>', no_re)
-map('n', ']t', '<Cmd>tabnext<CR>', no_re)
-map('n', '<Leader>tn', '<Cmd>tabnew<CR>', no_re)
+vim.keymap.set('n', '[t', '<Cmd>tabprev<CR>')
+vim.keymap.set('n', ']t', '<Cmd>tabnext<CR>')
+vim.keymap.set('n', '<Leader>tn', '<Cmd>tabnew<CR>')
 
 -- Terminal
-map('t', '<C-o>', '<C-\\><C-n>', no_re)
+vim.keymap.set('t', '<C-o>', '<C-\\><C-n>')

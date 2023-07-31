@@ -6,25 +6,25 @@ return {
 		local actions = require('telescope.actions')
 		local previewers = require('telescope.previewers')
 
-		vim.keymap.set('n', '<C-p>', builtin.find_files)
-		vim.keymap.set('n', '<Leader>tf', builtin.live_grep)
-		vim.keymap.set('n', '<Leader>th', builtin.help_tags)
-		vim.keymap.set('n', '<Leader>tb', builtin.buffers)
-		vim.keymap.set('n', '<Leader>tg', builtin.git_status)
+		vim.keymap.set('n', '<C-p>', builtin.find_files, {desc = "Find Files"})
+		vim.keymap.set('n', '<Leader>tf', builtin.live_grep, {desc="Workspace Grep"})
+		vim.keymap.set('n', '<Leader>th', builtin.help_tags, {desc = "Helptags"})
+		vim.keymap.set('n', '<Leader>tb', builtin.buffers, {desc = "Buffers"})
+		vim.keymap.set('n', '<Leader>tg', builtin.git_status, {desc = "Git Status"})
 		vim.keymap.set('n', '<M-c>', function()
 			builtin.find_files({search_dirs = {vim.fn.stdpath('config')}})
 		end)
 
 		-- LSP
-		vim.keymap.set('n', '<Leader>td', builtin.lsp_definitions)
-		vim.keymap.set('n', '<Leader>tr', builtin.lsp_references)
-		vim.keymap.set('n', '<Leader>ti', builtin.lsp_implementations)
-		vim.keymap.set('n', '<Leader>ts', builtin.lsp_document_symbols)
+		vim.keymap.set('n', '<Leader>td', builtin.lsp_definitions, {desc = "LSP Definitions"})
+		vim.keymap.set('n', '<Leader>tr', builtin.lsp_references, {desc = "LSP References"})
+		vim.keymap.set('n', '<Leader>ti', builtin.lsp_implementations, {desc = "LSP Implementations"})
+		vim.keymap.set('n', '<Leader>ts', builtin.lsp_document_symbols, {desc = "LSP Document Symbols"})
 		vim.keymap.set('n', '<Leader>te', function()
 			builtin.diagnostics({ bufnr = 0 })
-		end)
-		vim.keymap.set('n', '<Leader>tt', builtin.treesitter)
-		vim.keymap.set('n', '<Leader>tk', builtin.keymaps)
+		end, {desc = "Diagnostics"})
+		vim.keymap.set('n', '<Leader>tt', builtin.treesitter, {desc = "Treesitter"})
+		vim.keymap.set('n', '<Leader>tk', builtin.keymaps, {desc = "Keymaps"})
 
 		-- Don't preview files > 100000 bytes
 

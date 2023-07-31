@@ -144,6 +144,8 @@ return {
 						provider = 'GitBranch',
 						condition = condition.check_git_workspace,
 						highlight = {colors.magenta, colors.bg, 'bold'},
+						separator = ' ',
+						separator_highlight = {'NONE', colors.bg},
 					}
 				},
 				{
