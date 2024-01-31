@@ -8,6 +8,8 @@ return {
 
 	-- Language Tooling
 	"hrsh7th/vim-vsnip",
+	"hrsh7th/vim-vsnip-integ",
+	"rafamadriz/friendly-snippets",
 	"hrsh7th/cmp-nvim-lsp",
 	"hrsh7th/cmp-nvim-lsp-signature-help",
 	"hrsh7th/cmp-buffer",

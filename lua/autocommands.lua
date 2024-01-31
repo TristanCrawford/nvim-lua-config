@@ -19,7 +19,6 @@ mkCmd('TermOpen', {
 })
 
 local ftGroup = mkGroup('ExtraFiletypes', { clear = true })
-
 mkCmd({ 'BufRead', 'BufNew' }, {
 	group = ftGroup,
 	pattern = '*.gd',
@@ -30,4 +29,10 @@ mkCmd({'BufWritePost'}, {
 	group = ftGroup,
 	pattern = '*.rb',
 	command = 'silent !stree write %'
+})
+
+mkCmd({'BufWritePost'}, {
+	group = ftGroup,
+	pattern = '*.rs',
+	command = 'silent !rustfmt %'
 })

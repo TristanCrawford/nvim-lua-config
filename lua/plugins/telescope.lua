@@ -6,8 +6,18 @@ return {
 		local actions = require('telescope.actions')
 		local previewers = require('telescope.previewers')
 
-		vim.keymap.set('n', '<C-p>', builtin.find_files, {desc = "Find Files"})
-		vim.keymap.set('n', '<Leader>tf', builtin.live_grep, {desc="Workspace Grep"})
+		vim.keymap.set('n', '<C-p>', function()
+			builtin.find_files({
+				find_command = {'rg', '--files', '-g', '!{node_modules|_build|deps|target|zig-out|zig-cache}/'},
+			})
+		end, {desc = "Find Files"})
+
+		vim.keymap.set('n', '<Leader>tf', function()
+			builtin.live_grep({
+				glob_pattern = {'!*.log', '!*structure.sql'}
+			})
+		end, {desc="Workspace Grep"})
+
 		vim.keymap.set('n', '<Leader>th', builtin.help_tags, {desc = "Helptags"})
 		vim.keymap.set('n', '<Leader>tb', builtin.buffers, {desc = "Buffers"})
 		vim.keymap.set('n', '<Leader>tg', builtin.git_status, {desc = "Git Status"})
@@ -30,9 +40,6 @@ return {
 
 		require('telescope').setup {
 			defaults = {
-				file_ignore_patterns = {
-					'^(node_modules|_build|deps|target|zig-out|zig-cache)/',
-				},
 				buffer_previewer_maker = function(filepath, bufnr, opts)
 					opts = opts or {}
 					filepath = vim.fn.expand(filepath)

@@ -26,7 +26,7 @@ return {
 			map('n', '<Leader>gn', '<Cmd>lua vim.lsp.buf.rename()<CR>', opts)
 		end
 
-		local servers = { 'tsserver', 'vuels', 'svelte', 'solargraph', 'syntax_tree', 'rust_analyzer', 'ols', 'zls' }
+		local servers = { 'tsserver', 'vuels', 'svelte', 'solargraph', 'syntax_tree', 'gopls', 'gdscript', 'texlab' }
 
 		local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
